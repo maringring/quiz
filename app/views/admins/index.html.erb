@@ -1,0 +1,14 @@
+<h1 align="center">単語管理</h1>
+<div style="text-align:right"><%= button_to "MAIN", main_new_path %></div>
+<h3>単語リスト</h3>
+<div style="text-align:right"><%= button_to "単語追加", admins_new_path %></div>
+<%= render 'searches/search_form', post: @questions.klass %>
+<hr/>
+<% @questions.each do |q| %>
+    word : <%= q.question %><br>
+    mean : <%= q.description%>
+    <div style="text-align:right">
+    <a href="/admins/show/<%=q.id %>">見る</a>/<a href="/admins/edit/<%=q.id %>">修正</a>/<a href="/admins/destroy/<%=q.id %>">削除</a>
+    </div>
+    <hr/>
+<% end %>

@@ -10,7 +10,7 @@ class CookieController < ApplicationController
               cookies[:email] = user.email
               cookies[:password] = user.password_digest
               flash[:notice] = "LOGIN 成功"
-              redirect_to '/home/index'
+              redirect_to '/main/new' and return #home/index
             else
               flash[:notice] = "Passwordが違います。ご確認ください。"
             end
@@ -20,7 +20,7 @@ class CookieController < ApplicationController
         else
           flash[:notice] = "email、Password全て入力してください。"
         end
-        redirect_to cookie_new_path
+        redirect_to '/home/index' and return
       end
 
       def destroy

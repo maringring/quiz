@@ -1,0 +1,6 @@
+<div class="container">
+    <% @searches.each do |x| %>
+        <%= x.question %> | <%= content_tag(:span, truncate( raw( sanitize(x.description, :tags => %w(table tr td), :attributes => %w(id class style) ) ), :length => 70, :omission => "...")) %> | <%= x.created_at.in_time_zone("Asia/Seoul").strftime('%Y-%m-%d %H:%M') %>
+        <hr/>
+    <% end %>
+</div>

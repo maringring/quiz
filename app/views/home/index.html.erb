@@ -1,12 +1,12 @@
-<h2>単語帳LOGIN</h2>
+<h2 align="center">単語帳LOGIN</h2><br>
 
 <% if current_user.present? %>
   <%= link_to "", cookie_sign_out_path, method: :delete %><%#LOGOUT%>
 <% else %>
   <%= link_to "", cookie_new_path %><%#LOGIN%>
 <% end %>
-
-<%= form_with(url: "/cookie/sign_in)") do |f|%>
+<div style="text-align:center">
+<%= form_with(url: "/cookie/sign_in") do |f|%>
     <%= f.label :email %>
     <%= f.text_field :email %>
     <br>
@@ -15,7 +15,10 @@
     <%= f.password_field :password %>
 
     <%= f.submit "LOGIN" %>
-<% end %>
 
+<% end %>
+</div>
 <br>
+<div style="text-align:right">
 <%= link_to "新しいUser作成", new_user_path %>
+</div>

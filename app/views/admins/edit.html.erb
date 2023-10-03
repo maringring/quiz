@@ -1,0 +1,26 @@
+<h1 align="center">単語追加</h1>
+<div class="container">
+
+    <form action="/admins/update/<%= @question.id %>" method="ADMIN">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <div>
+            <div>word</div>
+            <input name="question_question" type="string" class="form-control" value="<%= @question.question %>">  
+        </div>
+
+        <div class="form-group">
+            <div>mean</div>
+            <textarea name="question_description" class="form-control" rows="2"><%= @question.description %></textarea>
+        </div>
+
+         <div class="form-group">
+            <div>類似語</div>
+            <textarea name="QuestinSimilarWord_similar_word" class="form-control" rows="3"><%= @question_similar_word.similar_word %></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">OK</button>
+    </form>
+</div>
+<div style="text-align:right">
+    <%= button_to "単語リスト", admins_index_path %>
+</div>

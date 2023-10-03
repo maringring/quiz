@@ -1,0 +1,2 @@
+class QuestinSimilarWord < ApplicationRecord
+end
