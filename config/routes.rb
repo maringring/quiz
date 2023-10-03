@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'cookie/new'
 
+  #퀴즈 경로
+  get '/dictionary/next_question' => 'dictionary#next_question'
+
   #시험삼아 만든 경로
   resources :questin_similar_words do
     resources :admins
