@@ -10,6 +10,11 @@ function loadNextQuestion() {
       }
     });
   }
+    // 문제번호 인덱스
+    let questionNumber = 1;
+    function updateQuestionNumber() {
+        $('#question_number').text(questionNumber);
+    }
 
   let previousChoices = [];  // 이전에 선택한 선택지 저장
 
@@ -50,6 +55,15 @@ function loadNextQuestion() {
     $('form').submit(function(event) {
       event.preventDefault();
       loadNextQuestion();  // Load the next question on form submission
+
+      questionNumber++;  // Increment question number
+      updateQuestionNumber();
+
+      if (questionNumber === 50) {
+        // Reached the 50th question, redirect to ranking page
+        window.location.href = '/ranking/new';
+      }
+    
     });
   });
   

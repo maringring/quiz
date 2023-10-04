@@ -1,12 +1,12 @@
 <h1 align="center">クイズ</h1>
-<div style="text-align:right">
-  <%= button_to "MAIN", main_new_path %>
+<div style="text-align:right"><font size=5>
+  <%= link_to "MAIN", main_new_path %></font>
 </div>
 
 <form action="#" method="post">
   <input type="hidden" id="question_id" name="question_id">
 
-  <span>第</span><span></span><span>問(全 50 問)</span><br>
+  <span>第</span><span id="question_number">1</span><span>問(全 50 問)</span><br>
   <span>問題：<span id="question_content">test</span></span>
   <hr/>
   <p>[類似語]</p>
