@@ -10,6 +10,8 @@ class CookieController < ApplicationController
               cookies[:email] = user.email
               cookies[:password] = user.password_digest
               flash[:notice] = "LOGIN 成功"
+              # 세션에 유저저장
+              session[:email] = User.email 
               redirect_to '/main/new' and return #home/index
             else
               flash[:notice] = "Passwordが違います。ご確認ください。"
@@ -20,6 +22,7 @@ class CookieController < ApplicationController
         else
           flash[:notice] = "email、Password全て入力してください。"
         end
+        
         redirect_to '/home/index' and return
       end
 
@@ -29,6 +32,8 @@ class CookieController < ApplicationController
           cookies.delete :passowrd
           redirect_to cookie_new_path
         end
+        redirect_to root_path, notice: '로그아웃되었습니다.'
+        session[:email] = nil 
       end
 
     end

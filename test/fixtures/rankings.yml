@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  correct_answers: 1
+  incorrect_answers: 1
+  correct_rate: 1.5
+
+two:
+  name: MyString
+  correct_answers: 1
+  incorrect_answers: 1
+  correct_rate: 1.5

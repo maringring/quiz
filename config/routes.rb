@@ -17,8 +17,11 @@ Rails.application.routes.draw do
 
   #퀴즈 경로
   get '/dictionary/next_question' => 'dictionary#next_question'
-
+  get '/dictionary/ranking' => 'dictionary#ranking'
+  # post '/ranking/new' => 'ranking#new'
   #시험삼아 만든 경로
+  post '/dictionary/ranking', to: 'dictionary#ranking'
+
   resources :questin_similar_words do
     resources :admins
   end
@@ -35,6 +38,7 @@ Rails.application.routes.draw do
   get '/main' => 'main#new'
   post 'cookie/sign_in', to: 'cookie#create'
   delete 'cookie/sign_out', to: 'cookie#destroy'
+  
 
   root 'home#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

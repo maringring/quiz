@@ -3,11 +3,11 @@
   <%= link_to "MAIN", main_new_path %></font>
 </div>
 
-<form action="#" method="post">
+<form action="#" method="post" id="quiz_form">
   <input type="hidden" id="question_id" name="question_id">
 
   <span>第</span><span id="question_number">1</span><span>問(全 50 問)</span><br>
-  <span>問題：<span id="question_content">test</span></span>
+  <span>問題：<span id="question_content" name="mondai">test</span></span>
   <hr/>
   <p>[類似語]</p>
   <span id="similar_word">test</span><br>
@@ -15,15 +15,15 @@
 
   <p>解答：</p>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" >
     <label class="form-check-label" for="flexRadioDefault1">test</label>
   </div>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
     <label class="form-check-label" for="flexRadioDefault2">test</label>
   </div>
   <div class="form-check">
-    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" >
     <label class="form-check-label" for="flexRadioDefault3">test</label>
   </div>
 
@@ -31,6 +31,16 @@
 
   <input type="submit" value="Submit">
 </form>
+
+
+ <%
+=begin%>
+ <p id="displaySelectedValue">test</p>
+<p id="qid">test</p>
+<p id="numericValue">test</p>  
+<%
+=end%>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/scripts/dictionary.js"></script>
