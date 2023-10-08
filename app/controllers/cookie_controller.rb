@@ -11,7 +11,7 @@ class CookieController < ApplicationController
               cookies[:password] = user.password_digest
               flash[:notice] = "LOGIN 成功"
               # 세션에 유저저장
-              session[:email] = User.email 
+              session[:email] = user.email 
               redirect_to '/main/new' and return #home/index
             else
               flash[:notice] = "Passwordが違います。ご確認ください。"
