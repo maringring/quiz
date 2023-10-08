@@ -1,8 +1,32 @@
-<h1 align="center">Main Menu</h1>
+<div class="container">
+<div class="bo">Main Menu</div>
 <div style="text-align:center">
-<p>下記のメニューよりクリックしてください。</p>
-<%= button_to "新しいUser作成", users_new_path %>
-<%= button_to "単語帳", dictionary_new_path %>
-<%= button_to "ランキング", dictionary_ranking_path %>
-<%= button_to "単語管理", admins_index_path %>
+<div class="boo">下記のメニューよりクリックしてください。</div>
+<%= button_to "新しいUser作成", users_new_path, class: "menu-button" %>
+<%= button_to "単語帳", dictionary_new_path , class: "menu-button"%>
+<%= button_to "ランキング", dictionary_ranking_path, class: "menu-button" %>
+<%= button_to "単語管理", admins_index_path, class: "menu-button" %>
 </div>
+</div>
+
+<style>
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh; /* 최소 높이를 화면 높이와 같도록 설정하여 세로 중앙 정렬 */
+}
+
+.menu-button {
+  width: 300px; /* 원하는 너비 설정 */
+  height: 35px; /* 원하는 높이 설정 */
+  margin-top: 5px;
+  font-size: 18px; /* 원하는 글꼴 크기 설정 */
+  /* 기타 스타일 속성을 필요에 따라 추가할 수 있습니다. */
+}
+
+.bo{font-size:3em; text-align:center; font-weight:bold;}
+
+.boo{font-size:1.2em; margin-bottom:30px; margin-top:20px;}
+</style>

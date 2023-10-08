@@ -1,23 +1,51 @@
-<h2>新しいUser作成</h2>
+<div class="container">
+<h1>User作成</h1>
 
 <%= form_with model: @user do |f|%>
 
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <br>
+    <div class="form-group">
+        <%= f.label :name, class: "label-width" %>
+        <%= f.text_field :name, class: "input-width" %>
+    </div>
     
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-    <br>
+    <div class="form-group">
+        <%= f.label :email, class: "label-width" %>
+        <%= f.text_field :email, class: "input-width" %>
+    </div>
 
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <br>
+    <div class="form-group">
+        <%= f.label :password, class: "label-width" %>
+        <%= f.password_field :password, class: "input-width" %>
+    </div>
 
-    <%= f.label :password_confirmation %> <%#_confirmation%>
-    <%= f.password_field :password_confirmation %> <%#_confirmation%>
-    <br>
+    <div class="form-group">
+        <%= f.label :password_confirmation, class: "label-width" %> <%#_confirmation%>
+        <%= f.password_field :password_confirmation, class: "input-width" %> <%#_confirmation%>
+    </div>
 
-    <%= f.submit %>
-    
+    <div style="text-align:right">
+    <%= f.submit "新しいUser作成する"%>
+    </div>
 <% end %>
+</div>
+
+<style>
+.label-width {
+  width: 150px; /* 원하는 라벨 넓이로 조정 */
+  display: inline-block;
+  text-align: right;
+  padding-right: 10px; /* 라벨과 입력 필드 사이의 간격 조정 */
+}
+
+.input-width {
+  width: 400px; /* 원하는 입력 필드 넓이로 조정 */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* 최소 높이를 화면 높이와 같도록 설정하여 세로 중앙 정렬 */
+}
+</style>

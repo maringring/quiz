@@ -1,24 +1,63 @@
-<h2 align="center">単語帳LOGIN</h2><br>
+<div class="container">
+  <h1 align="center">単語帳LOGIN</h1><br>
 
-<% if current_user.present? %>
-  <%= link_to "", cookie_sign_out_path, method: :delete %><%#LOGOUT%>
-<% else %>
-  <%= link_to "", cookie_new_path %><%#LOGIN%>
-<% end %>
-<div style="text-align:center">
-<%= form_with(url: "/cookie/sign_in") do |f|%>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-    <br>
+  <% if current_user.present? %>
+    <%= link_to "", cookie_sign_out_path, method: :delete %><%#LOGOUT%>
+  <% else %>
+    <%= link_to "", cookie_new_path %><%#LOGIN%>
+  <% end %>
+  <div style="text-align:center">
+  <%= form_with(url: "/cookie/sign_in") do |f|%>
 
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+      <div class="form-group">
+        <%= f.label :email, class: "label2-width" %>
+        <%= f.text_field :email, class: "input-width" %>
+      </div>
 
-    <%= f.submit "LOGIN" %>
+      <div class="form-group">
+        <%= f.label :password, class: "label-width" %>
+        <%= f.password_field :password, class: "input-width" %>
 
-<% end %>
+      <%= f.submit "LOGIN" %>
+      </div>
+  <% end %>
+  </div>
+  <br>
+  <div style="text-align:right">
+  <%= button_to "新しいUser作成", users_new_path ,class: "button"%>
+  </div>
 </div>
-<br>
-<div style="text-align:right">
-<%= link_to "新しいUser作成", new_user_path %>
-</div>
+
+<style>
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh; /* 최소 높이를 화면 높이와 같도록 설정하여 세로 중앙 정렬 */
+}
+
+.button {
+  width: 350px; /* 원하는 너비 설정 */
+  height: 35px; /* 원하는 높이 설정 */
+  font-size: 18px; /* 원하는 글꼴 크기 설정 */
+  /* 기타 스타일 속성을 필요에 따라 추가할 수 있습니다. */
+}
+
+.label-width {
+  width: 100px; /* 원하는 라벨 넓이로 조정 */
+  display: inline-block;
+  text-align: right;
+  padding-right: 10px; /* 라벨과 입력 필드 사이의 간격 조정 */
+}
+.label2-width {
+  width: 40px; /* 원하는 라벨 넓이로 조정 */
+  display: inline-block;
+  text-align: right;
+  padding-right: 10px; /* 라벨과 입력 필드 사이의 간격 조정 */
+}
+
+.input-width {
+  width: 300px; /* 원하는 입력 필드 넓이로 조정 */
+}
+</style>

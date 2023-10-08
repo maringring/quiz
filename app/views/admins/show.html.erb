@@ -1,3 +1,4 @@
+<div class="ma">
 <h1>単語</h1>
 word : <%= @question.question%><br>
 mean : <%= @question.description%><br>
@@ -8,3 +9,8 @@ mean : <%= @question.description%><br>
 <div style="text-align:right">
 <%= button_to "単語リスト", admins_index_path %>
 </div>
+</div>
+
+<style>
+.ma{margin-left:50px; margin-right:50px; margin-top:50px;}
+</style>

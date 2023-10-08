@@ -1,4 +1,5 @@
-<h1 align="center">クイズ</h1>
+<div style="margin-left:50px; margin-right:50px;">
+<div style="font-size:3.5em; font-weight:bold; text-align:center;">クイズ</div>
 <div style="text-align:right"><font size=5>
   <%= link_to "MAIN", main_new_path %></font>
 </div>
@@ -6,14 +7,21 @@
 <form action="#" method="post" id="quiz_form">
   <input type="hidden" id="question_id" name="question_id">
 
+  <div class="bo">
   <span>第</span><span id="question_number">1</span><span>問(全 50 問)</span><br>
+  </div>
+
   <span>問題：<span id="question_content" name="mondai">test</span></span>
   <hr/>
+  <div class="bo">
   <p>[類似語]</p>
+  </div>
   <span id="similar_word">test</span><br>
   <hr/>
 
+  <div class="bo">
   <p>解答：</p>
+  </div>
   <div class="form-check">
     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" >
     <label class="form-check-label" for="flexRadioDefault1">test</label>
@@ -29,8 +37,9 @@
 
   <!-- Add other choices similarly -->
 
-  <input type="submit" value="Submit">
+  <input type="submit" value="OK">
 </form>
+</div>
 
 
  <%
@@ -44,3 +53,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/scripts/dictionary.js"></script>
+<style>
+ .bo{font-weight:bold; font-size:1.3em;}
+</style>

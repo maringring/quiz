@@ -2,11 +2,13 @@
  th,td {width:100px; text-align:center;}
  #bo{font-weight:bold;}
  .highlighted {color: red; font-weight: bold;}
+ .title {font-size:3.5em; text-align:center; font-weight: bold;}
+ .ta{ font-size:1.3em;}
 </style>
 
-<h1 align="center">ランキング</h1>
+<div class=title>ランキング</div>
 <div style="text-align:right">
-  <%= button_to "MAIN", main_new_path %>
+  <%= button_to "MAIN", main_new_path, style: "font-size: 18px; margin-right:20px;" %>
 </div>
 <div style="margin-left:100px; font-size:1.2em">
 お疲れ様でした！<br>
@@ -15,7 +17,7 @@
 </div>
 <br><br>
 
-
+<div class="ta">
 <table align="center">
   <tr>
     <th>順位</th>
@@ -38,6 +40,7 @@
   <% end %>
   
 </table>
+</div>
 
 
 <%
