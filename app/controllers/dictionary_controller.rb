@@ -23,6 +23,8 @@ class DictionaryController < ApplicationController
     different_question = Question.where.not(id: question.id).order("RANDOM()").first
     different_question2 = Question.where.not(id: question.id).order("RANDOM()").second
 
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+
     render json: { 
       question: question, similar_word: similar_word, different_question: different_question, different_question2: different_question2
     }

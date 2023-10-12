@@ -74,7 +74,7 @@ function displayQuestion(question, similarWord, _differentQuestion, _differentQu
     askedQuestions.push(question.id);
     $('#question_id').val(question.id);//출제된 id값 기억
 
-    $('#numericValue').text('numericValue: ' + numericValue);
+    // $('#numericValue').text('numericValue: ' + numericValue);
 
     $('#qid').text(qid);
     
@@ -95,7 +95,7 @@ $(document).ready(function() {
     const numericValue = parseInt(selectedId);
     console.log('선택된 ID:', selectedId);
 
-    console.log('Numeric value:', +numericValue);
+    console.log('Numeric value:', numericValue);
 
     if (numericValue == qid) {
       correctAnswers++;
@@ -127,7 +127,7 @@ $(document).ready(function() {
     questionNumber++;  // 인덱스번호 증가
     updateQuestionNumber();
 
-    if (questionNumber > 10) { // 문제수 도달시 페이지 이동
+    if (questionNumber > 50) { // 문제수 도달시 페이지 이동
       // window.location.href = '/dictionary/ranking';
       window.location.href = '/dictionary/ranking?correct_answers=' + correctAnswers + '&incorrect_answers=' + incorrectAnswers;
     }else{
