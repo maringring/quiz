@@ -8,12 +8,14 @@
 
 <div class=title>ランキング</div>
 <div style="text-align:right">
-  <%= button_to "MAIN", main_new_path, style: "font-size: 18px; margin-right:20px;" %>
+  <%= button_to "MAIN", main_new_path, style: "font-size: 18px; margin-right:20px;",class:"btn btn-outline-secondary" %>
 </div>
 <div style="margin-left:100px; font-size:1.2em">
 お疲れ様でした！<br>
 あなたの成績は、50問中<span id="bo"><%= @correct_answers %></span>問正解！
-正解率<span id="bo"><%= @correct_rate %></span>%で <span id="bo"><%= @user_rank %></span>位です。
+正解率<span id="bo">
+<%= @correct_rate_display %>
+</span>%で <span id="bo"><%= @user_rank %></span>位です。
 </div>
 <br><br>
 
@@ -35,7 +37,7 @@
       <td><%= index + 1 %></td>
       <td><%= ranking.name %></td>
       <td><%= ranking.correct_answers %></td>
-      <td><%= ranking.correct_rate %>%</td>
+      <td><%= (ranking.correct_rate).to_i %>%</td>
     </tr>
   <% end %>
   

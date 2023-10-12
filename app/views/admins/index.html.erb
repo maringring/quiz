@@ -1,8 +1,8 @@
 <div class="ma">
 <h1 align="center">単語管理</h1>
-<div style="text-align:right"><%= button_to "MAIN", main_new_path %></div>
+<div style="text-align:right"><%= button_to "MAIN", main_new_path,class:"btn btn-outline-secondary" %></div>
 <h3>単語リスト</h3>
-<div style="text-align:right"><%= button_to "単語追加", admins_new_path %></div>
+<div style="text-align:right"><%= button_to "単語追加", admins_new_path,class:"btn btn-outline-secondary" %></div>
 <%= render 'searches/search_form', post: @questions.klass %>
 <hr/>
 <% @questions.each do |q| %>

@@ -1,26 +1,36 @@
-<h1 align="center">単語追加</h1>
 <div class="container">
-
+ <div class="bo">単語追加</div>
     <form action="/admins/create" method="ADMIN">
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <div>
             <div>word</div>
-            <input name="question_question" type="string" class="form-control" placeholder="word">  
+            <input name="question_question" type="string" class="form-control" placeholder="単語">  
         </div>
 
         <div class="form-group">
             <div>mean</div>
-            <textarea name="question_description" class="form-control" rows="2"></textarea>
+            <textarea name="question_description" class="form-control" placeholder="意味" rows="2"></textarea>
         </div>
 
         <div class="form-group">
             <div>類似語</div>
-            <textarea name="QuestinSimilarWord_similar_word" class="form-control" rows="3"></textarea>
+            <textarea name="QuestinSimilarWord_similar_word" class="form-control" placeholder="類似語" rows="3"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">OK</button>
+        <button type="submit" class="btn btn-outline-secondary">OK</button>
     </form>
+    <div style="text-align:right;">
+        <%= button_to "単語リスト", admins_index_path,class:"btn btn-outline-secondary" %>
+    </div>
 </div>
-<div style="text-align:right">
-    <%= button_to "単語リスト", admins_index_path %>
-</div>
+
+<style>
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 80vh; /* 최소 높이를 화면 높이와 같도록 설정하여 세로 중앙 정렬 */
+}
+.bo{font-size:3em; text-align:center; font-weight:bold;}
+
+</style>

@@ -61,6 +61,12 @@ class DictionaryController < ApplicationController
     @incorrect_answers = params[:incorrect_answers].to_i
     @correct_rate = (@correct_answers.to_f / (@correct_answers + @incorrect_answers)) * 100
 
+    if @correct_rate.nan?
+      @correct_rate_display = @correct_rate
+    else
+      @correct_rate_display = @correct_rate.to_i
+    end
+
 
     # 퀴즈 결과 저장
     save_quiz_result(@user_name, @correct_answers, @incorrect_answers)
