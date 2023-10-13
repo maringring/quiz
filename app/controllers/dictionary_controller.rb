@@ -21,7 +21,7 @@ class DictionaryController < ApplicationController
     similar_word = QuestinSimilarWord.find_by(question_id: question.id)
 
     different_question = Question.where.not(id: question.id).order("RANDOM()").first
-    different_question2 = Question.where.not(id: question.id).order("RANDOM()").second
+    different_question2 = Question.where.not(id: [question.id, different_question.id]).order("RANDOM()").first
 
     response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
 
