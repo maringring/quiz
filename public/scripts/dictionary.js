@@ -118,7 +118,7 @@ $(document).ready(function() {
     event.preventDefault(); //폼 제출 방지
     questionNumber++;  // 인덱스번호 증가
 
-    if (questionNumber > 50) { // 문제수 도달시 페이지 이동
+    if (questionNumber > 10) { // 문제수 도달시 페이지 이동
       window.location.href = '/dictionary/ranking?correct_answers=' + correctAnswers + '&incorrect_answers=' + incorrectAnswers;
     }else{
        loadNextQuestion();  // 양식 제출 시 다음 질문 로드

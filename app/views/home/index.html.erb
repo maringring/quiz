@@ -1,11 +1,6 @@
 <div class="container">
   <h1 align="center">単語帳LOGIN</h1><br>
 
-  <% if current_user.present? %>
-    <%= link_to "", cookie_sign_out_path, method: :delete %><%#LOGOUT%>
-  <% else %>
-    <%= link_to "", cookie_new_path %><%#LOGIN%>
-  <% end %>
   <div style="text-align:center">
   <%= form_with(url: "/cookie/sign_in") do |f|%>
 
@@ -47,7 +42,7 @@
 }
 .input-width2 {
   width: 300px; /* 원하는 입력 필드 넓이로 조정 */
-  margin-left: 73px;
+  margin-left: 79px;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');

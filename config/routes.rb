@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   get '/searches/result' => 'searches#result'
   get 'admins/index'
   get 'admins/new'
@@ -34,6 +35,7 @@ Rails.application.routes.draw do
   post 'admins/create'
   post 'admins/new'
   post 'main/new'
+  post 'mypage/admin'
 
   get '/main' => 'main#new'
   post 'cookie/sign_in', to: 'cookie#create'

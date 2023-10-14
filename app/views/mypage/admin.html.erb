@@ -1,0 +1,27 @@
+<h1>My Page</h1>
+
+<div class="container">
+
+<%= @user.email %><br>
+<%= @user.name %>
+
+</div>
+<div style="text-align:right;">
+<%= button_to "MAIN", main_new_path,class:"btn btn-outline-secondary " %>
+</div>
+
+<style>
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh; /* 최소 높이를 화면 높이와 같도록 설정하여 세로 중앙 정렬 */
+}
+
+h1{
+    text-align:center;
+    margin-top:20px;
+}
+
+</style>

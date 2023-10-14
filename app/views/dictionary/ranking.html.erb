@@ -16,7 +16,7 @@
 </div>
 <div style="margin-left:100px; font-size:1.2em">
 お疲れ様でした！<br>
-あなたの成績は、50問中<span id="bo"><%= @correct_answers %></span>問正解！
+あなたの成績は、10問中<span id="bo"><%= @correct_answers %></span>問正解！
 正解率<span id="bo">
 <%= @correct_rate_display %>
 </span>%で <span id="bo"><%= @user_rank %></span>位です。
@@ -41,7 +41,7 @@
       <td><%= index + 1 %></td>
       <td><%= ranking.name %></td>
       <td><%= ranking.correct_answers %></td>
-      <td><%= (ranking.correct_rate).to_i %>%</td>
+      <td><%= ranking.correct_rate.present? ? (ranking.correct_rate).to_i : 0 %>%</td>
     </tr>
   <% end %>
   
@@ -49,12 +49,4 @@
 </div>
 
 
-<%
-=begin%>
- <h1>퀴즈 결과</h1>
-<%= @user_name %>
-<p>정답 수: <%= @correct_answers %></p>
-<p>오답 수: <%= @incorrect_answers %></p> 
-<p>rate: <%= @correct_rate %></p>  
-<%
-=end%>
+

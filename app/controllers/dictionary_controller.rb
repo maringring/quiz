@@ -71,7 +71,9 @@ class DictionaryController < ApplicationController
 
 
     # 퀴즈 결과 저장
-    save_quiz_result(@user_name, @correct_answers, @incorrect_answers)
+    if @correct_answers > 0 #결과가 하나라도 있을 때 저장하는 처리
+      save_quiz_result(@user_name, @correct_answers, @incorrect_answers)
+    end
 
     @rankings = Ranking.order(correct_rate: :desc).limit(5)
     

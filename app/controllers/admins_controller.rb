@@ -11,6 +11,7 @@ class AdminsController < ApplicationController
     @questions = Question.create(question: params[:question_question], description: params[:question_description])
     # @admin = Admin.create(question: params[:admin_question], description: params[:admin_description])
     @question_similar_word = QuestinSimilarWord.create(similar_word: params[:QuestinSimilarWord_similar_word])
+    @question_similar_word.update(question_id: @question_similar_word.id)
     
     redirect_to admins_index_path
     
