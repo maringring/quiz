@@ -30,7 +30,7 @@ class CookieController < ApplicationController
         if current_user.present?
           cookies.delete :email
           cookies.delete :passowrd
-          redirect_to cookie_new_path
+          redirect_to home_index_path and return
         end
         redirect_to root_path, notice: '로그아웃되었습니다.'
         session[:email] = nil 

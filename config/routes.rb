@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   get 'ranking/new'
   get 'dictionary/new'
 
+  #mypage
+  get 'mypage/update_name'
+  get 'mypage/admin'
+  get 'mypage/update_password'
+
   resources :users, :questions, :questin_similar_words, :admins
   get 'main/new'
   get 'home/index'

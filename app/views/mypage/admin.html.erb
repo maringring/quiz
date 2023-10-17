@@ -1,22 +1,52 @@
 <h1>My Page</h1>
+<div style="text-align:right;">
+<%= button_to "MAIN", main_new_path,class:"btn btn-outline-secondary ", style:"margin-right:20px;" %>
+</div>
 
 <div class="container">
 
-<%= @user.email %><br>
-<%= @user.name %>
+    <form action="/mypage/update_name/<%= @user %>" method="nameADMIN">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <div class="row">
+            <span class="label">名前</span>
+            <input name="name" type="string" class="name-admin" value="<%= @user.name %>">  
+            <button type="submit" class="btn">変更</button>
+        </div>
+    </form>
+
+    <div class="row">
+        <span class="label">Email</span>
+        <input name="email" type="string" class="email-admin" value="<%= @user.email %>">  
+    </div>
+
+    <form id="passwordChangeForm" action="/mypage/update_password/<%= @user %>" method="nameADMIN">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <div class="row">
+            <span class="label">Password</span>
+            <input name="password" type="string" class="password-admin" autocomplete="off">  
+        </div>
+        <div class="row">
+            <span class="label">新しいPassword</span>
+            <input name="newpassword1" type="string" class="newpassword-admin" oninput="checkPasswordMatch()" placeholder="Enter password" autocomplete="off">
+            <span id="passwordMatchMessage" style="margin-left:10px;"></span>   
+        </div>
+        <div class="row">
+            <span class="label">新しいPassword</span>
+            <input name="newpassword2" type="string" class="newpassword-admin" oninput="checkPasswordMatch()" placeholder="Confirm password" autocomplete="off"> 
+            <button type="submit" class="btn" onclick="validateAndSubmit(event)">変更</button> 
+        </div>
+    </form>
+    
 
 </div>
 <div style="text-align:right;">
-<%= button_to "MAIN", main_new_path,class:"btn btn-outline-secondary " %>
+<%= button_to "LOGOUT", cookie_sign_out_path, method: :delete, class:"btn btn-outline-secondary ", style:"margin-right:20px;"%>
 </div>
 
 <style>
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 50vh; /* 최소 높이를 화면 높이와 같도록 설정하여 세로 중앙 정렬 */
+  margin-top:50px;
+  margin-left:200px;
 }
 
 h1{
@@ -24,4 +54,37 @@ h1{
     margin-top:20px;
 }
 
+.row {
+  margin-bottom: 10px;
+}
+
+.label {
+  display: inline-block;
+  width: 120px; /* 라벨 너비 조정 */
+  text-align:right;
+  margin-right:20px;
+}
+
+/* 입력 요소 스타일 */
+.name-admin,
+.email-admin,
+.password-admin,
+.newpassword-admin {
+  display: block;
+  width: 200px; /* 입력 요소 너비 조정 */
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.btn{
+    display: inline-block;
+    margin-left: 10px;
+}
+
+body{
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color:lightgray;
+}
+
 </style>
+<script src="/scripts/mypage.js"></script>
