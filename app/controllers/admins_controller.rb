@@ -2,6 +2,7 @@ class AdminsController < ApplicationController
   def index
     #@admins = Admin.all
     @questions = Question.all
+    @question_similar_word = QuestinSimilarWord.all
   end
 
   def new

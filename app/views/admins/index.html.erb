@@ -1,27 +1,94 @@
 <div class="ma">
 <h1 style="text-align:center; ">単語管理</h1>
-<div style="text-align:right"><%= button_to "MAIN", main_new_path,class:"btn btn-outline-secondary" %></div>
+<div style="text-align:right;"><%= button_to "MAIN", main_new_path, class: "btn btn-outline-secondary" %></div>
 <h3>単語リスト</h3>
-<div style="text-align:right"><%= button_to "単語追加", admins_new_path,class:"btn btn-outline-secondary" %></div>
-<%= render 'searches/search_form', post: @questions.klass %>
+<div style="text-align:right;"><%= button_to "単語追加", admins_new_path, class: "btn btn-outline-secondary" %></div>
+
+<%# 검색기능%>
+<span>単語検索 : </span><input type="text" id="filterInput">
+<button onclick="filterTable()" id="ken" class="btn btn-secondary btn-sm">検索</button>
 <hr/>
-<% @questions.each do |q| %>
-    word : <%= q.question %><br>
-    mean : <%= q.description%>
-    <div style="text-align:right">
-    <a href="/admins/show/<%=q.id %>">見る</a>/<a href="/admins/edit/<%=q.id %>">修正</a>/<a href="/admins/destroy/<%=q.id %>">削除</a>
-    </div>
-    <hr/>
-<% end %>
+
+<table align="center" >
+  <tr>
+    <th>No.</th>
+    <th>単語</th>
+    <th>意味</th>
+    <th>類似語</th>
+    <th>Tag</th>
+    <th>その他</th>
+  </tr>
+
+  <% @questions.each_with_index do |q, index| %>
+    <tr>
+        <td><%= index + 1 %></td>
+        <td><%= q.question %></td>
+        <td><%= q.description%></td>
+        <td>
+            <% @question_similar_word.each do |similar_word| %>
+                <% if similar_word.question_id == q.id %>
+                <%= similar_word.similar_word %>
+                <% end %>
+            <% end %>
+        </td>
+        <td>태그</td>
+        <td>
+            <div class="sonota">
+                <%= button_to "見る", "/admins/show/#{q.id}", method: :get, class: "btn btn-outline-secondary", id:"b1" %>
+                <%= button_to "修正", "/admins/edit/#{q.id}", method: :get, class: "btn btn-outline-primary", id:"b1"%>
+                <%= button_to "削除", "/admins/destroy/#{q.id}", method: :get, class: "btn btn-outline-danger", id:"b1"%>
+            </div>
+        </td>
+    </tr>
+  <% end %>
+  
+</table>
+
 </div>
 
+
+<script src="/scripts/search.js"></script>
 <style>
-    .ma{margin-left:30px; margin-right:30px;}
+.ma{margin-left:30px; margin-right:30px;}
 
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 
-    body,h1,h2,div,button{
+body,h1,h2,div,button{
     font-family: 'Noto Sans JP', sans-serif;
-    }
-    body{ background-color:whitesmoke;}
+}
+
+body{ background-color:whitesmoke;}
+
+table {
+    /* width: 100%; 테이블 전체 넓이 설정
+    table-layout: fixed; 테이블의 넓이를 고정으로 설정 */
+    width: 90%; /* 테이블 전체 넓이 설정 */
+    text-align:center;
+}
+
+/* 각 열의 넓이 설정 */
+table td {
+  /* width: 20%; 예시: 각 열의 넓이를 20%로 설정 */
+  width: 25%; /* 나머지 열의 넓이를 균일하게 설정 (예시: 25%) */
+  padding: 8px; /* 셀 안의 여백 설정 */
+}
+
+table td:first-child {
+  width: 5%; /* "No." 열의 넓이를 좁게 설정 (예시: 10%) */
+}
+
+.sonota{
+    display: flex;
+    justify-content: space-between;
+}
+
+#b1{
+    margin-right:5px;
+}
+
+#filterInput,#ken{
+    height: 30px;
+    vertical-align: top;
+}
+
 </style>
