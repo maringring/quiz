@@ -4,6 +4,10 @@
   <%= link_to "MAIN", main_new_path %>
 </div>
 
+<%if @Qcount < 10 %>
+<div class="noquiz">登録された単語の数が10個未満のため<br>クイズを実行できません<br> 単語を最低10個以上登録してください</div>
+<%else %>
+
 <form action="#" method="post" id="quiz_form">
   <input type="hidden" id="question_id" name="question_id">
 
@@ -39,6 +43,7 @@
 
   <input type="submit" value="OK" class="btn btn-secondary">
 </form>
+<%end%>
   <div style="text-align:right; font-size:1.5em;">
   <%= link_to "単語管理", admins_index_path %>
   </div>
@@ -64,5 +69,11 @@
  body{
   font-family: 'Noto Sans JP', sans-serif;
    background-color:whitesmoke;
+}
+.noquiz{
+  font-size:2.5em;
+  color:red;
+  text-align:center;
+  margin:80px;
 }
 </style>

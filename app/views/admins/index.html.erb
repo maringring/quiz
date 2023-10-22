@@ -8,6 +8,8 @@
 <span>単語検索 : </span><input type="text" id="filterInput">
 <button onclick="filterTable()" id="ken" class="btn btn-secondary btn-sm">検索</button>
 <hr/>
+<p>※ 登録された単語の個数が10個以下の場合クイズが出題されませんので、単語を最低10個以上登録してください。<p>
+<hr/>
 
 <table align="center" >
   <tr>
@@ -74,9 +76,13 @@ table td {
 }
 
 table td:first-child {
-  width: 5%; /* "No." 열의 넓이를 좁게 설정 (예시: 10%) */
+  width: 5%; /* "No." 열의 넓이를 좁게 설정 */
 }
 
+p{
+    color:red;
+    text-align:center;
+}
 .sonota{
     display: flex;
     justify-content: space-between;

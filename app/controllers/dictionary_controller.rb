@@ -2,6 +2,7 @@ require 'json'
 
 class DictionaryController < ApplicationController
   def new
+    @Qcount = Question.count
     
     # 랜덤한 퀴즈를 선택
     @question = Question.order("RANDOM()").first

@@ -1,24 +1,30 @@
 <div class="container">
  <div class="bo">単語追加</div>
-    <form action="/admins/create" method="ADMIN">
+    <%#<form action="/admins/create" method="ADMIN">%>
+    <%= form_tag admins_create_path, method: :post do %>
+        <% if flash[:alert].present? %>
+        <p class="alert"><%= flash[:alert] %></p>
+        <% end %>
+
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <div>
+        <div class="form-group">
             <div>word</div>
-            <input name="question_question" type="string" class="form-control" placeholder="単語">  
+            <%= text_field_tag 'question_question', session[:question_question].present? ? session[:question_question] : nil, class: 'form-control', placeholder: '単語' %>
         </div>
 
         <div class="form-group">
             <div>mean</div>
-            <textarea name="question_description" class="form-control" placeholder="意味" rows="2"></textarea>
+            <%= text_field_tag 'question_description', session[:question_description].present? ? session[:question_description] : nil, class: 'form-control', placeholder: '意味', rows: 2 %>
         </div>
 
         <div class="form-group">
             <div>類似語</div>
-            <textarea name="QuestinSimilarWord_similar_word" class="form-control" placeholder="類似語" rows="3"></textarea>
+            <%= text_field_tag 'QuestinSimilarWord_similar_word', session[:QuestinSimilarWord_similar_word].present? ? session[:QuestinSimilarWord_similar_word] : nil, class: 'form-control', placeholder: '類似語', rows: 3 %>
         </div>
 
         <button type="submit" class="btn btn-outline-secondary">OK</button>
-    </form>
+
+    <% end %>
     <div style="text-align:right;">
         <%= button_to "単語リスト", admins_index_path,class:"btn btn-outline-secondary" %>
     </div>
@@ -32,5 +38,6 @@
   min-height: 80vh; /* 최소 높이를 화면 높이와 같도록 설정하여 세로 중앙 정렬 */
 }
 .bo{font-size:3em; text-align:center; font-weight:bold;}
+.alert{color:red;}
 
 </style>

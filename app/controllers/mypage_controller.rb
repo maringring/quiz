@@ -21,10 +21,10 @@ class MypageController < ApplicationController
       # @user.update(password_digest: params[:newpassword1])
       @user.password = params[:newpassword1]
       @user.save
-      flash[:notice] = "비밀번호가 변경되었습니다."
+      flash[:notice] = "パスワードが変更されました。"
       
     else
-      flash[:notice] = "비밀번호를 확인해주세요."
+      flash[:notice] = "パスワードを確認してください。"
       
     end
 

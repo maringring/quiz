@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   post 'dictionary/new'
   post 'users/new'
   post 'admins/index'
+  post 'admins/edit'
+  post 'admins/update'
   post 'admins/create'
   post 'admins/new'
   post 'main/new'
