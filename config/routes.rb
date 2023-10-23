@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   
-  get 'dictionary/new'
-
   #mypage
   get 'mypage/update_name'
   get 'mypage/admin'
@@ -23,6 +21,7 @@ Rails.application.routes.draw do
   get 'admins/export_to_csv', to: 'admins#export_to_csv'
 
   #퀴즈 경로
+  get 'dictionary/new'
   get '/dictionary/next_question' => 'dictionary#next_question'
   get '/dictionary/ranking' => 'dictionary#ranking'
   #랭킹 경로
