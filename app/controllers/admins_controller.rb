@@ -7,6 +7,20 @@ class AdminsController < ApplicationController
   def new
   end
 
+  require 'csv'
+
+  def export_to_csv
+    @questions = Question.all  # 데이터를 가져오는 방법은 실제 애플리케이션에 따라 다를 수 있습니다.
+    @question_similar_word = QuestinSimilarWord.all
+    
+    respond_to do |format|
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"questions.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
+  end
+
   def create
     if params[:question_question].blank? || params[:question_description].blank? || params[:QuestinSimilarWord_similar_word].blank?
       flash[:alert] = "Question, Description, Similar Word를 모두 입력해주세요."

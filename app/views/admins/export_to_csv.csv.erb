@@ -1,0 +1,16 @@
+<%- headers = ["No.", "単語", "意味", "類似語"] -%>
+<%= CSV.generate_line(headers) %>
+
+<% @questions.each_with_index do |question, index| %>
+    <% data_row = [index + 1, question.question, question.description] %>
+   
+    <%# @question_similar_word에서 해당 question_id에 해당하는 데이터 찾기%>
+    <% similar_words = @question_similar_word.select { |word| word.question_id == question.id }%>
+
+    <%# similar_words에 대한 데이터 추가%>
+    <% similar_words.each do |word|%>
+        <%# 데이터 행 생성 (No., 単語, 意味, 類似語) %>
+        <% data_row_with_similar = data_row + [word.similar_word] %>
+        <%= CSV.generate_line(data_row_with_similar) %>
+    <% end %>
+<% end %>

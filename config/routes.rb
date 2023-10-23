@@ -1,14 +1,5 @@
 Rails.application.routes.draw do
   
-  get '/searches/result' => 'searches#result'
-  get 'admins/index'
-  get 'admins/new'
-  get 'admins/create'
-  get 'admins/show/:id' => "admins#show"
-  get 'admins/edit/:id' => "admins#edit"
-  get 'admins/update/:id' => "admins#update"
-  get 'admins/destroy/:id' => "admins#destroy"
-  get 'ranking/new'
   get 'dictionary/new'
 
   #mypage
@@ -16,16 +7,25 @@ Rails.application.routes.draw do
   get 'mypage/admin'
   get 'mypage/update_password'
 
-  resources :users, :questions, :questin_similar_words, :admins
   get 'main/new'
   get 'home/index'
   get 'cookie/new'
 
+  #단어관리
+  get 'admins/show/:id' => "admins#show"
+  get 'admins/edit/:id' => "admins#edit"
+  get 'admins/update/:id' => "admins#update"
+  get 'admins/destroy/:id' => "admins#destroy"
+  get 'admins/index'
+  get 'admins/new'
+  get 'admins/create'
+  #csv다운로드
+  get 'admins/export_to_csv', to: 'admins#export_to_csv'
+
   #퀴즈 경로
   get '/dictionary/next_question' => 'dictionary#next_question'
   get '/dictionary/ranking' => 'dictionary#ranking'
-  # post '/ranking/new' => 'ranking#new'
-  #시험삼아 만든 경로
+  #랭킹 경로
   post '/dictionary/ranking', to: 'dictionary#ranking'
 
   resources :questin_similar_words do
