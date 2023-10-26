@@ -9,6 +9,7 @@ class MypageController < ApplicationController
     email = session[:email]
     @user = User.find_by(email: email)
     @user.update(name: params[:name])
+    flash[:notice] = "名前が変更されました。"
 
     redirect_to mypage_admin_path
   end
