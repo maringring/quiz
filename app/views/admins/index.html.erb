@@ -2,7 +2,9 @@
 <h1 style="text-align:center; ">単語管理</h1>
 <div style="text-align:right;"><%= button_to "MAIN", main_new_path, class: "btn btn-outline-secondary" %></div>
 <h3>単語リスト</h3>
-<div style="text-align:right;"><%= button_to "単語追加", admins_new_path, class: "btn btn-outline-secondary" %></div>
+<div class="horizbt">
+    <%= button_to "単語追加", admins_new_path, class: "btn btn-outline-secondary",id:"b1" %>
+</div>
 
 <%# 검색기능%>
 <span>単語検索 : </span><input type="text" id="filterInput">
@@ -33,7 +35,11 @@
                 <% end %>
             <% end %>
         </td>
-        <td>태그</td>
+        <td>
+            <% @question_tags[index].each do |tag| %>
+                <%= tag.name %>
+            <% end %>
+        </td>
         <td>
             <div class="sonota">
                 <%= button_to "見る", "/admins/show/#{q.id}", method: :get, class: "btn btn-outline-secondary", id:"b1" %>
@@ -87,6 +93,11 @@ p{
 .sonota{
     display: flex;
     justify-content: space-between;
+}
+
+.horizbt{
+    display: flex; 
+    justify-content: flex-end;
 }
 
 #b1{

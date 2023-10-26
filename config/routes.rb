@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+ 
   #mypage
   get 'mypage/update_name'
   get 'mypage/admin'
@@ -20,6 +20,17 @@ Rails.application.routes.draw do
   #csv다운로드
   get 'admins/export_to_csv', to: 'admins#export_to_csv'
 
+  #태그루트
+  post 'tag/index'
+  get 'tag/index'
+  post 'tag/new'
+  post 'tag/create'
+  get 'tag/edit/:id' => "tag#edit"
+  get 'tag/update/:id' => "tag#update"
+  get 'tag/destroy/:id' => "tag#destroy"
+  #버튼
+  
+   
   #퀴즈 경로
   get 'dictionary/new'
   get '/dictionary/next_question' => 'dictionary#next_question'
@@ -35,11 +46,13 @@ Rails.application.routes.draw do
   post 'ranking/new'
   post 'dictionary/new'
   post 'users/new'
+
   post 'admins/index'
   post 'admins/edit'
   post 'admins/update'
   post 'admins/create'
   post 'admins/new'
+  post 'admins/tag_create'
   post 'main/new'
   post 'mypage/admin'
 

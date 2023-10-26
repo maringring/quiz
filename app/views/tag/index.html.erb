@@ -1,0 +1,84 @@
+<div class="ma">
+<h1 style="text-align:center; ">TAG 管理</h1>
+<div style="text-align:right;"><%= button_to "MAIN", main_new_path, class: "btn btn-outline-secondary" %></div>
+<h3>Tagリスト</h3>
+<div class="horizbt">
+    <%= button_to "Tag追加", tag_new_path, class: "btn btn-outline-secondary" %>
+</div>
+
+<hr/>
+
+<table align="center" >
+  <tr>
+    <th>No.</th>
+    <th>Tag</th>
+    <th>その他</th>
+  </tr>
+
+  <% @tags.each_with_index do |tag, index| %>
+    <tr>
+        <td><%= index + 1 %></td>
+        <td><%= tag.name %></td>
+        <td>
+            <div class="sonota">
+                <%= button_to "修正", "/tag/edit/#{tag.id}", method: :get, class: "btn btn-outline-primary", id:"b1"%>
+                <%= button_to "削除", "/tag/destroy/#{tag.id}", method: :get, class: "btn btn-outline-danger", id:"b1"%>
+            </div>
+        </td>
+    </tr>
+  <% end %>
+  
+</table>
+
+
+<style>
+.ma{margin-left:30px; margin-right:30px;}
+
+body{
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+body{ background-color:whitesmoke;}
+
+table {
+    /* width: 100%; 테이블 전체 넓이 설정
+    table-layout: fixed; 테이블의 넓이를 고정으로 설정 */
+    width: 50%; /* 테이블 전체 넓이 설정 */
+    text-align:center;
+}
+
+/* 각 열의 넓이 설정 */
+table td {
+  /* width: 20%; 예시: 각 열의 넓이를 20%로 설정 */
+  width: 25%; /* 나머지 열의 넓이를 균일하게 설정 (예시: 25%) */
+  padding: 8px; /* 셀 안의 여백 설정 */
+}
+
+table td:first-child {
+  width: 5%; /* "No." 열의 넓이를 좁게 설정 */
+}
+
+p{
+    color:red;
+    text-align:center;
+}
+.sonota{
+    display: flex;
+    justify-content: space-between;
+}
+
+.horizbt{
+    display: flex; 
+    justify-content: flex-end;
+}
+
+#b1{
+    margin-right:5px;
+}
+
+#filterInput,#ken{
+    height: 30px;
+    vertical-align: top;
+}
+
+</style>

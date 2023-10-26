@@ -1,0 +1,32 @@
+<div class="container">
+ <div class="bo">Tag 追加</div>
+    <form action="/tag/update/<%= @tags.id %>" method="TAG">
+
+        <div class="form-group">
+            <%= label_tag 'tag_name', 'Tag' %>
+            <%= text_field_tag 'tag_name',@tags.name, class: 'form-control'%>
+        </div>
+
+        <button type="submit" class="btn btn-outline-secondary">OK</button>
+
+   </form>
+    <div style="text-align:right;">
+        <%= button_to "Tag リスト", tag_index_path,class:"btn btn-outline-secondary" %>
+    </div>
+</div>
+
+<style>
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 80vh; /* 최소 높이를 화면 높이와 같도록 설정하여 세로 중앙 정렬 */
+}
+.bo{font-size:3em; text-align:center; font-weight:bold;}
+.alert{color:red;}
+
+body{
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+</style>
