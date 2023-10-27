@@ -85,10 +85,10 @@ $(document).ready(function() {
       success: function(response) {
         console.log(askedQuestions);
         if (askedQuestions.includes(response.question.id)) {
-          // If asked before, load the next question
+          // 중복될 경우의 로직
           loadNextQuestion();
         } else {
-          // If not asked before, display the question
+          // 중복되지 않을경우의 로직
           $('#question_number').text(questionNumber); //리로드시 문제번호 호출
           displayQuestion(response.question, response.similar_word, response.different_question, response.different_question2);
         }
@@ -101,6 +101,7 @@ $(document).ready(function() {
 
   $('form').submit(function(event) {
 
+    //정답수 체크
     const selectedId = $('input[name="flexRadioDefault"]:checked').val();
     const numericValue = parseInt(selectedId);
     console.log('선택된 ID:', selectedId);

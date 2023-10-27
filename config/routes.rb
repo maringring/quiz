@@ -59,6 +59,9 @@ Rails.application.routes.draw do
   get '/main' => 'main#new'
   post 'cookie/sign_in', to: 'cookie#create'
   delete 'cookie/sign_out', to: 'cookie#destroy'
+
+  #신규유저작성
+  resources :users
   
 
   root 'home#index'
