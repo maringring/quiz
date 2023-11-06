@@ -38,8 +38,20 @@ Rails.application.routes.draw do
   #랭킹 경로
   post '/dictionary/ranking', to: 'dictionary#ranking'
 
-  resources :questin_similar_words do
+  resources :question_similar_words do
     resources :admins
+  end
+
+  # resources :admins do # 추가된 코드
+  #   member do
+  #     post 'add_similar_word'
+  #   end
+  # end
+
+  resources :admins do
+    collection do
+      post 'create'
+    end
   end
 
   #button_main

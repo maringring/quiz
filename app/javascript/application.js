@@ -2,3 +2,6 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
+//= require cocoon
+require("jquery")
+require("@nathanvda/cocoon")

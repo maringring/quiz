@@ -1,25 +1,37 @@
 <div class="container">
  <div class="bo">単語追加</div>
-    <%= form_tag admins_create_path, method: :post do %>
+    <%#= form_tag admins_create_path, method: :post do %>
+    <%= form_for @question, url: admins_create_path, method: :post do |f| %>
+ 
         <% if flash[:alert].present? %>
         <p class="alert"><%= flash[:alert] %></p>
         <% end %>
 
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <div class="form-group">
-            <div>word</div>
-            <%= text_field_tag 'question_question', session[:question_question].present? ? session[:question_question] : nil, class: 'form-control', placeholder: '単語' %>
+            <%= f.label :question %>
+            <br/>
+            <%= f.text_field :question , class: 'form-control', placeholder: '単語'%>
         </div>
 
         <div class="form-group">
-            <div>mean</div>
-            <%= text_field_tag 'question_description', session[:question_description].present? ? session[:question_description] : nil, class: 'form-control', placeholder: '意味', rows: 2 %>
+            <%= f.label :description %>
+            <br/>
+            <%= f.text_field :description ,class: 'form-control', placeholder: '意味'%>
         </div>
 
         <div class="form-group">
-            <div>類似語</div>
-            <%= text_field_tag 'QuestinSimilarWord_similar_word', session[:QuestinSimilarWord_similar_word].present? ? session[:QuestinSimilarWord_similar_word] : nil, class: 'form-control', placeholder: '類似語', rows: 3 %>
+        <div>類似語</div>
+        <div class="nested-fields">
+            <%= f.fields_for :question_similar_words do |question_similar_word_fields| %>
+            <%= render 'new_question_similar_word', f: question_similar_word_fields %>
+            <% end %>
+            <div class="links">
+            <%= link_to_add_association "Add Similar Word", f, :question_similar_words, class: 'btn btn-outline-secondary add_fields' %>
+            </div>
         </div>
+        </div>
+
 
         <div class="form-group">
             <div>TAG</div>
@@ -39,6 +51,8 @@
     </div>
 </div>
 
+
+<%= javascript_include_tag 'cocoon' %>
 <style>
 .container {
   display: flex;

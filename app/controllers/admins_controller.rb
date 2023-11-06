@@ -1,20 +1,22 @@
 class AdminsController < ApplicationController
   def index
     @questions = Question.all
-    @question_similar_word = QuestinSimilarWord.all
+    @question_similar_word = QuestionSimilarWord.all
     @tags = Tag.all
     @question_tags = @questions.map { |q| q.tags }
   end
 
   def new
     @tags = Tag.all
+    @question = Question.new #추가된 코드
+    @question.question_similar_words.build #추가된 코드
   end
 
   require 'csv'
 
   def export_to_csv
-    @questions = Question.all  # 데이터를 가져오는 방법은 실제 애플리케이션에 따라 다를 수 있습니다.
-    @question_similar_word = QuestinSimilarWord.all
+    @questions = Question.all  # 데이터를 가져오는 방법
+    @question_similar_word = QuestionSimilarWord.all
     
     respond_to do |format|
       format.csv do
@@ -26,48 +28,41 @@ class AdminsController < ApplicationController
 
   def create
     @tags = Tag.all
+  
+      # Strong Parameters를 사용하여 question_params 설정
+      question_params = params.require(:question).permit(:question, :description, :tag_id, question_similar_words_attributes: [:id, :similar_word, :_destroy])
 
-    if params[:question_question].blank? || params[:question_description].blank? || params[:QuestinSimilarWord_similar_word].blank?
-      flash[:alert] = "Question, Description, Similar Word를 모두 입력해주세요."
-
-      # 세션에 값을 저장
-      session[:question_question] = params[:question_question]
-      session[:question_description] = params[:question_description]
-      session[:QuestinSimilarWord_similar_word] = params[:QuestinSimilarWord_similar_word]
-
-      redirect_to admins_new_path
-    else
-      @questions = Question.create(question: params[:question_question], description: params[:question_description])
-      @question_similar_word = QuestinSimilarWord.create(similar_word: params[:QuestinSimilarWord_similar_word])
-      @question_similar_word.update(question_id: @question_similar_word.id)
-
-      # 선택한 태그의 ID를 가져옵니다.
-      tag_id = params[:tag_id]
-
-      # 선택한 태그와의 관계를 설정합니다.
-      if tag_id.present?
-        tag = Tag.find_by(id: tag_id)
-        @questions.tags << tag
+      @question = Question.new(question_params)
+  
+      if @question.save
+        # 선택한 태그의 ID를 가져옵니다.
+        tag_id = params[:tag_id]
+  
+        # 선택한 태그와의 관계를 설정합니다.
+        if tag_id.present?
+          tag = Tag.find_by(id: tag_id)
+          @question.tags << tag
+        end
+  
+        redirect_to admins_index_path
+      else
+        # 실패 처리
       end
-
-      # 세션 값을 지움
-      session.delete(:question_question)
-      session.delete(:question_description)
-      session.delete(:QuestinSimilarWord_similar_word)
-    
-    redirect_to admins_index_path
-    end
+    # end
   end
+  
 
   def show
     @question = Question.find(params[:id])
-    @question_similar_word = QuestinSimilarWord.find(params[:id])
+    # @question_similar_word = QuestionSimilarWord.find(params[:id])
+    @question_similar_word = @question.question_similar_words
   end
 
   def edit
    
     @question = Question.find(params[:id])
-    @question_similar_word = QuestinSimilarWord.find(params[:id])
+    # @question_similar_word = QuestionSimilarWord.find(params[:id])
+    @question_similar_word = @question.question_similar_words
 
     @tags = Tag.all
     @question_tags = @question.tags
@@ -79,8 +74,8 @@ class AdminsController < ApplicationController
     @question = Question.find(params[:id])
     @question.update(question: params[:question_question], description: params[:question_description])
     
-    @question_similar_word = QuestinSimilarWord.find(params[:id])
-    @question_similar_word.update(similar_word: params[:QuestinSimilarWord_similar_word])
+    @question_similar_word = QuestionSimilarWord.find(params[:id])
+    @question_similar_word.update(similar_word: params[:QuestionSimilarWord_similar_word])
 
 
     # 선택한 태그의 ID를 가져옵니다.
@@ -103,7 +98,8 @@ class AdminsController < ApplicationController
     @question.destroy
     # @admin = Admin.find(params[:id])
     # @admin.destroy
-    @question_similar_word = QuestinSimilarWord.find(params[:id])
+    # @question_similar_word = QuestinSimilarWord.find(params[:id])
+    @question_similar_word = @question.question_similar_words
     @question_similar_word.destroy
     
     redirect_to admins_index_path

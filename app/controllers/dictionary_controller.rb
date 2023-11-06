@@ -8,7 +8,7 @@ class DictionaryController < ApplicationController
     @question = Question.order("RANDOM()").first
     @different_question1 = Question.where.not(id: @question.id).order("RANDOM()").first
     @different_question2 = Question.where.not(id: @question.id).order("RANDOM()").second
-    @question_similar_word = QuestinSimilarWord.find_by(question_id: @question.id)
+    @question_similar_word = QuestionSimilarWord.find_by(question_id: @question.id)
 
     #answer
     @question_description0 = @question.description
@@ -19,7 +19,7 @@ class DictionaryController < ApplicationController
 
   def next_question
     question = Question.order("RANDOM()").first
-    similar_word = QuestinSimilarWord.find_by(question_id: question.id)
+    similar_word = QuestionSimilarWord.find_by(question_id: question.id)
 
     different_question = Question.where.not(id: question.id).order("RANDOM()").first
     different_question2 = Question.where.not(id: [question.id, different_question.id]).order("RANDOM()").first

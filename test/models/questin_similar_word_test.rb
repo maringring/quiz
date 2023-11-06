@@ -1,6 +1,6 @@
 require "test_helper"
 
-class QuestinSimilarWordTest < ActiveSupport::TestCase
+class QuestionSimilarWordTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

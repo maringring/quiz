@@ -1,10 +1,12 @@
 <div class="ma">
 <h1>単語</h1>
-word : <%= @question.question%><br>
-mean : <%= @question.description%><br>
+question : <%= @question.question%><br>
+description : <%= @question.description%><br>
 <hr/>
 <h2>類似語</h2>
-<%= @question_similar_word.similar_word%><br>
+<% @question_similar_word.each do |similar_word| %>
+    <%= similar_word.similar_word %><br>
+<% end %>
 
 <div style="text-align:right">
 <%= button_to "単語リスト", admins_index_path,class:"btn btn-outline-secondary" %>

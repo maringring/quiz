@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_23_053617) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "questin_similar_words", force: :cascade do |t|
+  create_table "question_similar_words", force: :cascade do |t|
     t.integer "question_id"
     t.string "similar_word"
     t.datetime "created_at", null: false
