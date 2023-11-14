@@ -47,22 +47,21 @@ class DictionaryController < ApplicationController
   end
 
   def find_user_rank(rankings, user_name)
-    # user = get_user_name(user)
-    # user_name = user.name
 
     rankings.each_with_index do |ranking, index|
       return index + 1 if ranking.name == user_name
     end
     return nil # 사용자를 찾지 못한 경우
+    
   end
 
   def ranking
     @user_name = get_user_name # 사용자 이름 가져오기
-    # @user_rank = find_user_rank(rankings, user_name) #유저 랭크가져오기
-
+   
     @correct_answers = params[:correct_answers].to_i
     @incorrect_answers = params[:incorrect_answers].to_i
-    @correct_rate = (@correct_answers.to_f / (@correct_answers + @incorrect_answers)) * 100
+    #정답률 가져오기
+    @correct_rate = (@correct_answers.to_f / (@correct_answers + @incorrect_answers)) * 100 
 
     if @correct_rate.nan?
       @correct_rate_display = @correct_rate

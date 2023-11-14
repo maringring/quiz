@@ -72,11 +72,6 @@ $(document).ready(function() {
 
   loadNextQuestion();  // 페이지 로드 시 첫 번째 질문 로드
 
-
-  // function updateQuestionNumber() {
-  //   $('#question_number').text(questionNumber);
-  // }
-
     //퀴즈데이터
   function loadNextQuestion() {
     $.ajax({

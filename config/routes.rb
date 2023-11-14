@@ -42,12 +42,6 @@ Rails.application.routes.draw do
     resources :admins
   end
 
-  # resources :admins do # 추가된 코드
-  #   member do
-  #     post 'add_similar_word'
-  #   end
-  # end
-
   resources :admins do
     collection do
       post 'create'
@@ -77,8 +71,5 @@ Rails.application.routes.draw do
   
 
   root 'home#index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+ 
 end
