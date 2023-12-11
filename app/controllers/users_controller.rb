@@ -10,11 +10,12 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       redirect_to users_new_path
+      flash[:notice] = "全てを作成してください。"
     end
   end
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :name)
+    params.require(:user).permit(:email, :password, :password_confirmation, :name, :birthday )
   end
 end

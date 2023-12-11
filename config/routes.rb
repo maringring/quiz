@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  #findpassword and change root
+  post 'findpassword/user_confirm'
+  get 'findpassword/user_confirm'
+  post 'findpassword/update'
+  get 'findpassword/change_password'
+  post 'findpassword/new'
  
   #mypage
   get 'mypage/update_name'
@@ -52,6 +59,7 @@ Rails.application.routes.draw do
   post 'ranking/new'
   post 'dictionary/new'
   post 'users/new'
+  post 'home/index'
 
   post 'admins/index'
   post 'admins/edit'

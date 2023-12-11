@@ -1,10 +1,10 @@
 <div class="container">
- <div class="bo">Tag 追加</div>
-    <form action="/tag/update/<%= @tags.id %>" method="TAG">
+ <div class="bo">Tag 修正</div>
+    <form action="/tag/update/<%= @tag.id %>" method="TAG">
 
         <div class="form-group">
             <%= label_tag 'tag_name', 'Tag' %>
-            <%= text_field_tag 'tag_name',@tags.name, class: 'form-control'%>
+            <%= text_field_tag 'tag_name',@tag.name, class: 'form-control'%>
         </div>
 
         <button type="submit" class="btn btn-outline-secondary">OK</button>

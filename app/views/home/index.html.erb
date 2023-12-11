@@ -16,8 +16,9 @@
   <% end %>
   </div>
   <br>
-  <div style="text-align:right">
-  <%= button_to "新しいUser作成", users_new_path ,id: "button",class:"btn btn-secondary"%>
+  <div class="btn0">
+    <%= button_to "暗証番号探す", findpassword_new_path ,id: "button",class:"btn btn-secondary"%>
+    <%= button_to "新しいUser作成", users_new_path ,id: "button",class:"btn btn-secondary"%>
   </div>
 </div>
 
@@ -27,14 +28,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 80vh; /* 최소 높이를 화면 높이와 같도록 설정하여 세로 중앙 정렬 */
+  min-height: 90vh; /* 최소 높이를 화면 높이와 같도록 설정하여 세로 중앙 정렬 */
 }
 
 #button {
-  width: 350px; /* 원하는 너비 설정 */
+  width: 200px; /* 원하는 너비 설정 */
   height: 38px; /* 원하는 높이 설정 */
   font-size: 18px; /* 원하는 글꼴 크기 설정 */
+  margin-right: 3px;
   /* 기타 스타일 속성을 필요에 따라 추가할 수 있습니다. */
+}
+
+.btn0{
+  display: flex;
+  justify-content: space-between;
 }
 
 .input-width {

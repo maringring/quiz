@@ -1,13 +1,15 @@
 class MypageController < ApplicationController
-  def admin
-    email = session[:email]
+  before_action :find_user
 
+  def find_user
+    email = session[:email]
     @user = User.find_by(email: email)
   end
 
+  def admin
+  end
+
   def update_name
-    email = session[:email]
-    @user = User.find_by(email: email)
     @user.update(name: params[:name])
     flash[:notice] = "名前が変更されました。"
 
@@ -15,8 +17,6 @@ class MypageController < ApplicationController
   end
 
   def update_password
-    email = session[:email]
-    @user = User.find_by(email: email)
     
     if @user.authenticate(params[:password])
       # @user.update(password_digest: params[:newpassword1])

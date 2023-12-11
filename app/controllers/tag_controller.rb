@@ -1,4 +1,6 @@
 class TagController < ApplicationController
+  before_action :find_tag, only: [:edit, :update, :destroy]
+
   def index
     @tags = Tag.all
   end
@@ -7,27 +9,30 @@ class TagController < ApplicationController
   end
 
   def create
-    @tags = Tag.create(name: params[:tag_name])
+    @tag = Tag.create(name: params[:tag_name])
     
     redirect_to tag_index_path
   end
 
   def edit
-    @tags = Tag.find(params[:id])
   end
 
   def update
-    @tags = Tag.find(params[:id])
-    @tags.update(name: params[:tag_name])
+    @tag.update(name: params[:tag_name])
 
     redirect_to tag_index_path
   end
 
   def destroy
-    @tags = Tag.find(params[:id])
-    @tags.destroy
+    @tag.destroy
 
     redirect_to tag_index_path
+  end
+
+  private
+
+  def find_tag
+    @tag = Tag.find(params[:id])
   end
 
 end
